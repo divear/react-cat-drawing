@@ -38,22 +38,21 @@ function App() {
     const c = canvas.current.getContext("2d")
     c.strokeStyle = "teal"
     c.lineWidth = 10
-    /*c.beginPath();
-    c.arc(Xpos,Ypos,1,0,2*Math.PI);
-    c.stroke();*/
+    
     c.fillStyle = color
-    //c.fillRect(Math.random()*1000, Math.random()*1000, Math.random()*1000, Math.random()*1000);
-    c.drawImage(image, Xpos, Ypos, Xpos, Ypos)
+    var rand = Math.random()*500
+    c.drawImage(image, Xpos, Ypos, rand, rand)
 
   }
-
+  
   
 
   return (
     <div className="App">
       <div>
         <canvas
-        onMouseMoveCapture={Draw}
+        onClick={Draw}
+        
         ref={canvas}
         width={window.innerWidth - 50}
         height={window.innerHeight -50}
