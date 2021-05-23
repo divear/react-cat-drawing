@@ -41,7 +41,7 @@ function App() {
     
     c.fillStyle = color
     var rand = Math.random()*500
-    c.drawImage(image, Xpos, Ypos, rand, rand)
+    c.drawImage(image, Xpos - (rand/2), Ypos - (rand/2), rand, rand)
 
   }
   
