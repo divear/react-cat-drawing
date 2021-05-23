@@ -38,12 +38,12 @@ function App() {
     const c = canvas.current.getContext("2d")
     c.strokeStyle = "teal"
     c.lineWidth = 10
-    c.beginPath();
+    /*c.beginPath();
     c.arc(Xpos,Ypos,1,0,2*Math.PI);
-    c.stroke();
+    c.stroke();*/
     c.fillStyle = color
     //c.fillRect(Math.random()*1000, Math.random()*1000, Math.random()*1000, Math.random()*1000);
-    c.drawImage(image, Math.random()*1000, Math.random()*1000, Math.random()*1000, Math.random()*1000)
+    c.drawImage(image, Xpos, Ypos, Xpos, Ypos)
 
   }
 
