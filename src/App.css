@@ -7,3 +7,8 @@ body {
     right: 96%;
     bottom: 99%;
 }
+.counter{
+    position: absolute;
+    top: 0%;
+    right: 0%;
+}

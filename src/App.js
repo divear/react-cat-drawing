@@ -2,6 +2,9 @@ import React,{useState,useEffect, useRef} from 'react'
 import './App.css';
 
 function App() {
+  
+  const [count, setCount] = useState(1)
+
   var Xpos;
   var Ypos;
 
@@ -29,27 +32,27 @@ function App() {
   },[image, canvas]);
 
   function Draw(){
-    let letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
 
     const c = canvas.current.getContext("2d")
-    c.strokeStyle = "teal"
-    c.lineWidth = 10
-    
-    c.fillStyle = color
+
     var rand = Math.random()*500
-    c.drawImage(image, Xpos - (rand/2), Ypos - (rand/2), rand, rand)
+    c.drawImage(image, Xpos - (rand/2), Ypos - (rand/2), rand, rand);
+    setCount(count+1)
 
   }
+
+  
+ 
+
+  
+
   
   
 
   return (
     <div className="App">
       <div>
+        
         <canvas
         onClick={Draw}
         
@@ -59,7 +62,7 @@ function App() {
         />
       </div>
       <div>
-        
+        <h1 className="counter">Number of images: {count}</h1>
       </div>
     </div>
   );
