@@ -3,7 +3,8 @@ import './App.css';
 
 function App() {
   
-  const [count, setCount] = useState(1)
+  const [count, setCount] = useState(1);
+  const [cos, setCos] = useState(false)
 
   var Xpos;
   var Ypos;
@@ -32,21 +33,27 @@ function App() {
   },[image, canvas]);
 
   function Draw(){
-
     const c = canvas.current.getContext("2d")
-
-    var rand = Math.random()*500
-    c.drawImage(image, Xpos - (rand/2), Ypos - (rand/2), rand, rand);
+    var rand = Math.random()*500;
     setCount(count+1)
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    c.fillStyle = color
+
+    if(cos){
+      c.fillRect(Xpos - (rand/2), Ypos - (rand/2), rand, rand);
+    }else{
+      c.drawImage(image, Xpos - (rand/2), Ypos - (rand/2), rand, rand);
+    }
 
   }
 
-  
- 
-
-  
-
-  
+  function Change(e){
+    setCos(e.target.checked);
+  }  
   
 
   return (
@@ -61,9 +68,18 @@ function App() {
         height={window.innerHeight -50}
         />
       </div>
-      <div>
-        <h1 className="counter">Number of images: {count}</h1>
+      <div className="info">
+        <h1>Number of images: {count}</h1>
+        <div onChange={e => Change(e)} className="choose">
+          <h1>Cats</h1>
+          <label className="switch">
+            <input type="checkbox"/>
+            <span className="slider round"></span>
+          </label>
+          <h1>Squares</h1>
+        </div>
       </div>
+      
     </div>
   );
 }
