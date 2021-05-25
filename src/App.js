@@ -4,6 +4,7 @@ import './App.css';
 function App() {
   
   const [count, setCount] = useState(1);
+  const [squares, setSquares] = useState(1)
   const [cos, setCos] = useState(false)
 
   var Xpos;
@@ -35,17 +36,18 @@ function App() {
   function Draw(){
     const c = canvas.current.getContext("2d")
     var rand = Math.random()*500;
-    setCount(count+1)
     let letters = '0123456789ABCDEF';
     let color = '#';
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }
-    c.fillStyle = color
+    c.fillStyle = color;
 
     if(cos){
+      setSquares(squares+1)
       c.fillRect(Xpos - (rand/2), Ypos - (rand/2), rand, rand);
     }else{
+      setCount(count+1)
       c.drawImage(image, Xpos - (rand/2), Ypos - (rand/2), rand, rand);
     }
 
@@ -64,12 +66,13 @@ function App() {
         onClick={Draw}
         
         ref={canvas}
-        width={window.innerWidth - 50}
-        height={window.innerHeight -50}
+        width={window.innerWidth - 15}
+        height={window.innerHeight -20}
         />
       </div>
       <div className="info">
         <h1>Number of images: {count}</h1>
+        <h1>Number of squares: {squares}</h1>
         <div onChange={e => Change(e)} className="choose">
           <h1>Cats</h1>
           <label className="switch">
